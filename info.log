@@ -1,0 +1,55 @@
+2018-12-05 13:53:27.374 [main] INFO  com.fei.springboot.Application -Starting Application on hp-PC with PID 7788 (D:\workspace_idea\svn\spring-boot-mybatis-mysql-write-read\target\classes started by hp in D:\workspace_idea\svn\spring-boot-mybatis-mysql-write-read)
+2018-12-05 13:53:27.379 [main] INFO  com.fei.springboot.Application -No active profile set, falling back to default profiles: default
+2018-12-05 13:53:27.486 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext -Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1cf7b61: startup date [Wed Dec 05 13:53:27 CST 2018]; root of context hierarchy
+2018-12-05 13:53:28.306 [background-preinit] INFO  o.h.validator.internal.util.Version -HV000001: Hibernate Validator 5.3.4.Final
+2018-12-05 13:53:29.277 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker -Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$ab8dc030] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-05 13:53:30.046 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer -Tomcat initialized with port(s): 80 (http)
+2018-12-05 13:53:30.059 [main] INFO  o.a.catalina.core.StandardService -Starting service Tomcat
+2018-12-05 13:53:30.060 [main] INFO  o.a.catalina.core.StandardEngine -Starting Servlet Engine: Apache Tomcat/8.5.11
+2018-12-05 13:53:30.153 [localhost-startStop-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -Initializing Spring embedded WebApplicationContext
+2018-12-05 13:53:30.153 [localhost-startStop-1] INFO  o.s.web.context.ContextLoader -Root WebApplicationContext: initialization completed in 2667 ms
+2018-12-05 13:53:30.481 [localhost-startStop-1] INFO  o.s.b.w.s.ServletRegistrationBean -Mapping servlet: 'dispatcherServlet' to [/]
+2018-12-05 13:53:30.486 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean -Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-05 13:53:30.487 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean -Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-05 13:53:30.487 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean -Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-12-05 13:53:30.487 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean -Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-05 13:53:30.562 [main] INFO  c.f.s.c.d.DataSourceConfiguration --------------------- writeDataSource init ---------------------
+2018-12-05 13:53:31.526 [main] INFO  c.f.s.c.d.DataSourceConfiguration --------------------- read01 DataSourceOne init ---------------------
+2018-12-05 13:53:31.768 [main] INFO  c.f.s.c.d.DataSourceConfiguration --------------------- read02 DataSourceTwo init ---------------------
+2018-12-05 13:53:31.970 [main] INFO  c.f.s.c.d.MybatisConfiguration ---------------------  sqlSessionFactory init ---------------------
+2018-12-05 13:53:33.259 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter -Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1cf7b61: startup date [Wed Dec 05 13:53:27 CST 2018]; root of context hierarchy
+2018-12-05 13:53:33.383 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping -Mapped "{[/user/add]}" onto public java.lang.String com.fei.springboot.controller.UserController.add(java.lang.String,java.lang.String)
+2018-12-05 13:53:33.384 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping -Mapped "{[/user/readAndAdd]}" onto public java.lang.String com.fei.springboot.controller.UserController.readAndWrite(java.lang.String,java.lang.String)
+2018-12-05 13:53:33.385 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping -Mapped "{[/user/queryPage]}" onto public java.lang.String com.fei.springboot.controller.UserController.queryPage()
+2018-12-05 13:53:33.385 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping -Mapped "{[/user/get/{id}]}" onto public java.lang.String com.fei.springboot.controller.UserController.findById(java.lang.String)
+2018-12-05 13:53:33.385 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping -Mapped "{[/user/addAndRead]}" onto public java.lang.String com.fei.springboot.controller.UserController.addAndRead(java.lang.String,java.lang.String)
+2018-12-05 13:53:33.385 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping -Mapped "{[/user/hello]}" onto public java.lang.String com.fei.springboot.controller.UserController.hello()
+2018-12-05 13:53:33.390 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-12-05 13:53:33.390 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-12-05 13:53:33.502 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping -Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-12-05 13:53:33.502 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping -Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-12-05 13:53:33.606 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping -Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-12-05 13:53:34.570 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter -Registering beans for JMX exposure on startup
+2018-12-05 13:53:34.572 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter -Bean with name 'writeDataSource' has been autodetected for JMX exposure
+2018-12-05 13:53:34.572 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter -Bean with name 'readDataSource01' has been autodetected for JMX exposure
+2018-12-05 13:53:34.572 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter -Bean with name 'readDataSource02' has been autodetected for JMX exposure
+2018-12-05 13:53:34.581 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter -Located MBean 'readDataSource02': registering with JMX server as MBean [com.alibaba.druid.pool:name=readDataSource02,type=DruidDataSource]
+2018-12-05 13:53:34.584 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter -Located MBean 'readDataSource01': registering with JMX server as MBean [com.alibaba.druid.pool:name=readDataSource01,type=DruidDataSource]
+2018-12-05 13:53:34.585 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter -Located MBean 'writeDataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=writeDataSource,type=DruidDataSource]
+2018-12-05 13:53:34.608 [main] INFO  o.a.coyote.http11.Http11NioProtocol -Initializing ProtocolHandler ["http-nio-80"]
+2018-12-05 13:53:34.628 [main] INFO  o.a.coyote.http11.Http11NioProtocol -Starting ProtocolHandler [http-nio-80]
+2018-12-05 13:53:34.646 [main] INFO  o.a.tomcat.util.net.NioSelectorPool -Using a shared selector for servlet write/read
+2018-12-05 13:53:34.671 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer -Tomcat started on port(s): 80 (http)
+2018-12-05 13:53:34.679 [main] INFO  com.fei.springboot.Application -Started Application in 8.102 seconds (JVM running for 8.87)
+2018-12-05 13:53:38.291 [http-nio-80-exec-1] INFO  o.a.tomcat.util.http.parser.Cookie -A cookie header was received [1541582057,1541729387,1542990172; zg_ba909bede4544204a4d25eaae30511f8=%7B%22sid%22%3A%201543044025247%2C%22updated%22%3A%201543044376045%2C%22info%22%3A%201543044025252%2C%22superProperty%22%3A%20%22%7B%7D%22%2C%22platform%22%3A%20%22%7B%7D%22%2C%22utm%22%3A%20%22%7B%7D%22%2C%22referrerDomain%22%3A%20%22%22%2C%22landHref%22%3A%20%22http%3A%2F%2Flocalhost%3A8080%2F%22%7D] that contained an invalid cookie. That cookie will be ignored.Note: further occurrences of this error will be logged at DEBUG level.
+2018-12-05 13:53:38.298 [http-nio-80-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-12-05 13:53:38.298 [http-nio-80-exec-1] INFO  o.s.web.servlet.DispatcherServlet -FrameworkServlet 'dispatcherServlet': initialization started
+2018-12-05 13:53:38.323 [http-nio-80-exec-1] INFO  o.s.web.servlet.DispatcherServlet -FrameworkServlet 'dispatcherServlet': initialization completed in 25 ms
+2018-12-05 13:53:38.363 [http-nio-80-exec-1] INFO  c.f.s.c.d.DataSourceContextHolder -数据库切换到读库...
+2018-12-05 13:53:38.646 [http-nio-80-exec-1] INFO  c.alibaba.druid.pool.DruidDataSource -{dataSource-1} inited
+2018-12-05 13:53:38.728 [http-nio-80-exec-1] INFO  c.alibaba.druid.pool.DruidDataSource -{dataSource-2} inited
+2018-12-05 13:53:38.758 [http-nio-80-exec-1] INFO  c.f.s.c.dbconfig.SqlPrintInterceptor -执行sql耗时:370 ms - id:com.fei.springboot.dao.UserMapper.findById - Sql:
+2018-12-05 13:53:38.758 [http-nio-80-exec-1] INFO  c.f.s.c.dbconfig.SqlPrintInterceptor -   select id,user_name from sys_user where id='1'
+2018-12-05 13:53:39.608 [http-nio-80-exec-3] INFO  c.f.s.c.d.DataSourceContextHolder -数据库切换到读库...
+2018-12-05 13:53:39.621 [http-nio-80-exec-3] INFO  c.f.s.c.dbconfig.SqlPrintInterceptor -执行sql耗时:12 ms - id:com.fei.springboot.dao.UserMapper.findById - Sql:
+2018-12-05 13:53:39.622 [http-nio-80-exec-3] INFO  c.f.s.c.dbconfig.SqlPrintInterceptor -   select id,user_name from sys_user where id='1'
