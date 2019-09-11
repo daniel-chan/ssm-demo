@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.daselearn.admin.mapper.BookMapper">
+	<!-- 目的：为dao接口方法提供sql语句配置 -->
+	<resultMap id="BaseResultMap" type="com.daselearn.admin.entity.Book" >
+		<id column="book_id" property="bookId" jdbcType="BIGINT" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="number" property="number" jdbcType="INTEGER" />
+	</resultMap>
+	<sql id="Base_Column_List" >
+		book_id, name, number
+	</sql>
+
+
+	<!--useGeneratedKeys="true" keyProperty="bookId" 获取插入后的主键ID值-->
+	<insert id="insert"  useGeneratedKeys="true" keyProperty="bookId" parameterType="Book" >
+		INSERT INTO book (name, number)
+		VALUES ( #{name},#{number})
+	</insert>
+
+	<insert id="insertSelective" parameterType="Book" >
+		INSERT INTO appointment
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+
+			<if test="name != null" >
+				name,
+			</if>
+			<if test="number != null" >
+				number,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="name != null" >
+				#{name},
+			</if>
+			<if test="number != null" >
+				#{number},
+			</if>
+		</trim>
+	</insert>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+		DELETE FROM book
+		WHERE book_id = #{bookId}
+	</delete>
+
+	<update id="updateByPrimaryKeySelective" parameterType="Book" >
+		UPDATE book
+		<set >
+			<if test="name != null" >
+				name = #{name},
+			</if>
+			<if test="number != null" >
+				number = #{number},
+			</if>
+		</set>
+		WHERE book_id = #{bookId}
+	</update>
+
+	<update id="reduceNumber">
+		UPDATE book
+		SET number = number - 1
+		WHERE
+		book_id = #{bookId}
+		AND number > 0
+	</update>
+
+	<!--返回resultMap="BaseResultMap" ，或 resultType="Book" -->
+	<select id="queryBySelective" resultMap="BaseResultMap" parameterType="Book">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM book
+		<where>
+			<if test='name != null and name !=""'>
+				and name LIKE '%' #{name} '%'
+			</if>
+			<if test='number != null and number != ""'>
+				and number = #{number}
+			</if>
+		</where>
+		ORDER BY book_id desc
+	</select>
+
+	<select id="queryById" resultType="Book" parameterType="Long">
+		<!-- 具体的sql -->
+		SELECT
+		book_id,
+		name,
+		number
+		FROM
+		book
+		WHERE
+		book_id = #{bookId}
+	</select>
+
+</mapper>

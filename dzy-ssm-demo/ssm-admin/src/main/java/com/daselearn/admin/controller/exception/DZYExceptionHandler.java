@@ -1,0 +1,56 @@
+/**
+ * Copyright 2018 http://www.daniel.com
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+package com.daselearn.admin.controller.exception;
+
+import com.daselearn.common.dto.JsonResult;
+import com.daselearn.common.exception.DZYException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.dao.DuplicateKeyException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+/**
+ * 异常处理器
+ *
+ * @author daniel
+ * @date  2019/7/19
+ */
+@RestControllerAdvice
+public class DZYExceptionHandler {
+	private Logger logger = LoggerFactory.getLogger(getClass());
+
+	/**
+	 * 处理自定义异常
+	 */
+	@ExceptionHandler(DZYException.class)
+	public JsonResult handleRRException(DZYException e){
+		return JsonResult.error(e.getCode(),e.getMsg());
+	}
+
+	@ExceptionHandler(DuplicateKeyException.class)
+	public JsonResult handleDuplicateKeyException(DuplicateKeyException e){
+		logger.error(e.getMessage(), e);
+		return JsonResult.error("数据库中已存在该记录");
+	}
+
+	@ExceptionHandler(Exception.class)
+	public JsonResult handleException(Exception e){
+		logger.error(e.getMessage(), e);
+		return JsonResult.error("未知错误，请联系管理员");
+	}
+}

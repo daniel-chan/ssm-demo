@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+	<!-- 配置SpringMVC -->
+	<!-- 1.开启SpringMVC注解模式 -->
+	<!-- 简化配置： 
+		(1)自动注册DefaultAnootationHandlerMapping,AnotationMethodHandlerAdapter 
+		(2)提供一些列：数据绑定，数字和日期的format @NumberFormat, @DateTimeFormat, xml,json默认读写支持 
+	-->
+	<mvc:annotation-driven />
+	
+	<!-- 2.静态资源默认servlet配置
+		(1)加入对静态资源的处理：js,gif,png
+		(2)允许使用"/"做整体映射
+	 -->
+	 <mvc:default-servlet-handler/>
+
+
+	<!--对象转换为json对象返回 -->
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<!--Spring处理返回值为String类型的结果时使用了StringHttpMessageConverter，UTF-8防止前端中文乱码-->
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter"><constructor-arg  value="UTF-8"/></bean>
+
+			<!--用于解决返回的日期总是被转成了数字-->
+			<!--注意：如果想要单个bean的某个日期字段显示年月日时分秒的话，只需要在对应日期的get方法上添加@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")即可。-->
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+			<!--<property name="supportedMediaTypes">-->
+				<!--<list>-->
+					<!--<value>application/json;charset=UTF-8</value>-->
+				<!--</list>-->
+			<!--</property>-->
+			<property name="objectMapper">
+				<bean class="com.fasterxml.jackson.databind.ObjectMapper">
+					<property name="dateFormat">
+						<bean class="java.text.SimpleDateFormat">
+							<constructor-arg value="yyyy-MM-dd HH:mm:ss">
+							</constructor-arg>
+						</bean>
+					</property>
+				</bean>
+			</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+
+	 <!-- 3.配置jsp 显示ViewResolver -->
+	 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	 	<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+	 	<property name="prefix" value="/WEB-INF/jsp/" />
+	 	<property name="suffix" value=".jsp" />
+	 </bean>
+	 
+	 <!-- 4.扫描web相关的bean -->
+	 <context:component-scan base-package="com.daselearn.admin.controller" />
+
+	<!--<mvc:interceptors>-->
+		<!--<mvc:interceptor>-->
+			<!--<mvc:mapping path="/book/**"/>-->
+			<!--<bean class="com.daselearn.admin.interceptor.ProjectIdInterceptor"/>-->
+		<!--</mvc:interceptor>-->
+	<!--</mvc:interceptors>-->
+
+</beans>

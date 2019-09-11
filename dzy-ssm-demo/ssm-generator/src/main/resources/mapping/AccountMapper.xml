@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.daselearn.admin.mapper.AccountMapper">
+  <resultMap id="BaseResultMap" type="com.daselearn.admin.entity.Account">
+    <id column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="card_num" jdbcType="VARCHAR" property="cardNum" />
+    <result column="sex" jdbcType="BIT" property="sex" />
+    <result column="encrypted_password" jdbcType="VARCHAR" property="encryptedPassword" />
+    <result column="assistant_password" jdbcType="VARCHAR" property="assistantPassword" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="age" jdbcType="TINYINT" property="age" />
+    <result column="height" jdbcType="INTEGER" property="height" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, nick_name, real_name, card_num, sex, encrypted_password, assistant_password, 
+    create_time, update_time, age, height
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from account
+    where user_id = #{userId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from account
+    where user_id = #{userId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.daselearn.admin.entity.Account">
+    insert into account (user_id, nick_name, real_name, 
+      card_num, sex, encrypted_password, 
+      assistant_password, create_time, update_time, 
+      age, height)
+    values (#{userId,jdbcType=BIGINT}, #{nickName,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, 
+      #{cardNum,jdbcType=VARCHAR}, #{sex,jdbcType=BIT}, #{encryptedPassword,jdbcType=VARCHAR}, 
+      #{assistantPassword,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{age,jdbcType=TINYINT}, #{height,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.daselearn.admin.entity.Account">
+    insert into account
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="nickName != null">
+        nick_name,
+      </if>
+      <if test="realName != null">
+        real_name,
+      </if>
+      <if test="cardNum != null">
+        card_num,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="encryptedPassword != null">
+        encrypted_password,
+      </if>
+      <if test="assistantPassword != null">
+        assistant_password,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="height != null">
+        height,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNum != null">
+        #{cardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=BIT},
+      </if>
+      <if test="encryptedPassword != null">
+        #{encryptedPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="assistantPassword != null">
+        #{assistantPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=TINYINT},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.daselearn.admin.entity.Account">
+    update account
+    <set>
+      <if test="nickName != null">
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNum != null">
+        card_num = #{cardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=BIT},
+      </if>
+      <if test="encryptedPassword != null">
+        encrypted_password = #{encryptedPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="assistantPassword != null">
+        assistant_password = #{assistantPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=TINYINT},
+      </if>
+      <if test="height != null">
+        height = #{height,jdbcType=INTEGER},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.daselearn.admin.entity.Account">
+    update account
+    set nick_name = #{nickName,jdbcType=VARCHAR},
+      real_name = #{realName,jdbcType=VARCHAR},
+      card_num = #{cardNum,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=BIT},
+      encrypted_password = #{encryptedPassword,jdbcType=VARCHAR},
+      assistant_password = #{assistantPassword,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      age = #{age,jdbcType=TINYINT},
+      height = #{height,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.daselearn.admin.entity.Account">
+    <id column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="card_num" jdbcType="VARCHAR" property="cardNum" />
+    <result column="sex" jdbcType="TINYINT" property="sex" />
+    <result column="encrypted_password" jdbcType="VARCHAR" property="encryptedPassword" />
+    <result column="assistant_password" jdbcType="VARCHAR" property="assistantPassword" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="age" jdbcType="TINYINT" property="age" />
+    <result column="height" jdbcType="INTEGER" property="height" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, nick_name, real_name, card_num, sex, encrypted_password, assistant_password, 
+    create_time, update_time, age, height
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from account
+    where user_id = #{userId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from account
+    where user_id = #{userId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.daselearn.admin.entity.Account">
+    insert into account (user_id, nick_name, real_name, 
+      card_num, sex, encrypted_password, 
+      assistant_password, create_time, update_time, 
+      age, height)
+    values (#{userId,jdbcType=BIGINT}, #{nickName,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, 
+      #{cardNum,jdbcType=VARCHAR}, #{sex,jdbcType=TINYINT}, #{encryptedPassword,jdbcType=VARCHAR}, 
+      #{assistantPassword,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{age,jdbcType=TINYINT}, #{height,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.daselearn.admin.entity.Account">
+    insert into account
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="nickName != null">
+        nick_name,
+      </if>
+      <if test="realName != null">
+        real_name,
+      </if>
+      <if test="cardNum != null">
+        card_num,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="encryptedPassword != null">
+        encrypted_password,
+      </if>
+      <if test="assistantPassword != null">
+        assistant_password,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="height != null">
+        height,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNum != null">
+        #{cardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="encryptedPassword != null">
+        #{encryptedPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="assistantPassword != null">
+        #{assistantPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=TINYINT},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.daselearn.admin.entity.Account">
+    update account
+    <set>
+      <if test="nickName != null">
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNum != null">
+        card_num = #{cardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="encryptedPassword != null">
+        encrypted_password = #{encryptedPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="assistantPassword != null">
+        assistant_password = #{assistantPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=TINYINT},
+      </if>
+      <if test="height != null">
+        height = #{height,jdbcType=INTEGER},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.daselearn.admin.entity.Account">
+    update account
+    set nick_name = #{nickName,jdbcType=VARCHAR},
+      real_name = #{realName,jdbcType=VARCHAR},
+      card_num = #{cardNum,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=TINYINT},
+      encrypted_password = #{encryptedPassword,jdbcType=VARCHAR},
+      assistant_password = #{assistantPassword,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      age = #{age,jdbcType=TINYINT},
+      height = #{height,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.daselearn.admin.entity.Account">
+    <id column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="card_num" jdbcType="VARCHAR" property="cardNum" />
+    <result column="sex" jdbcType="TINYINT" property="sex" />
+    <result column="encrypted_password" jdbcType="VARCHAR" property="encryptedPassword" />
+    <result column="assistant_password" jdbcType="VARCHAR" property="assistantPassword" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="age" jdbcType="TINYINT" property="age" />
+    <result column="height" jdbcType="INTEGER" property="height" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, nick_name, real_name, card_num, sex, encrypted_password, assistant_password, 
+    create_time, update_time, age, height
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from account
+    where user_id = #{userId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from account
+    where user_id = #{userId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.daselearn.admin.entity.Account">
+    insert into account (user_id, nick_name, real_name, 
+      card_num, sex, encrypted_password, 
+      assistant_password, create_time, update_time, 
+      age, height)
+    values (#{userId,jdbcType=BIGINT}, #{nickName,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, 
+      #{cardNum,jdbcType=VARCHAR}, #{sex,jdbcType=TINYINT}, #{encryptedPassword,jdbcType=VARCHAR}, 
+      #{assistantPassword,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{age,jdbcType=TINYINT}, #{height,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.daselearn.admin.entity.Account">
+    insert into account
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="nickName != null">
+        nick_name,
+      </if>
+      <if test="realName != null">
+        real_name,
+      </if>
+      <if test="cardNum != null">
+        card_num,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="encryptedPassword != null">
+        encrypted_password,
+      </if>
+      <if test="assistantPassword != null">
+        assistant_password,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="height != null">
+        height,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNum != null">
+        #{cardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="encryptedPassword != null">
+        #{encryptedPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="assistantPassword != null">
+        #{assistantPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=TINYINT},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.daselearn.admin.entity.Account">
+    update account
+    <set>
+      <if test="nickName != null">
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNum != null">
+        card_num = #{cardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="encryptedPassword != null">
+        encrypted_password = #{encryptedPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="assistantPassword != null">
+        assistant_password = #{assistantPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=TINYINT},
+      </if>
+      <if test="height != null">
+        height = #{height,jdbcType=INTEGER},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.daselearn.admin.entity.Account">
+    update account
+    set nick_name = #{nickName,jdbcType=VARCHAR},
+      real_name = #{realName,jdbcType=VARCHAR},
+      card_num = #{cardNum,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=TINYINT},
+      encrypted_password = #{encryptedPassword,jdbcType=VARCHAR},
+      assistant_password = #{assistantPassword,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      age = #{age,jdbcType=TINYINT},
+      height = #{height,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.daselearn.admin.entity.Account">
+    <id column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="card_num" jdbcType="VARCHAR" property="cardNum" />
+    <result column="sex" jdbcType="BIT" property="sex" />
+    <result column="encrypted_password" jdbcType="VARCHAR" property="encryptedPassword" />
+    <result column="assistant_password" jdbcType="VARCHAR" property="assistantPassword" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="age" jdbcType="TINYINT" property="age" />
+    <result column="height" jdbcType="INTEGER" property="height" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, nick_name, real_name, card_num, sex, encrypted_password, assistant_password, 
+    create_time, update_time, age, height
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from account
+    where user_id = #{userId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from account
+    where user_id = #{userId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.daselearn.admin.entity.Account">
+    insert into account (user_id, nick_name, real_name, 
+      card_num, sex, encrypted_password, 
+      assistant_password, create_time, update_time, 
+      age, height)
+    values (#{userId,jdbcType=BIGINT}, #{nickName,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, 
+      #{cardNum,jdbcType=VARCHAR}, #{sex,jdbcType=BIT}, #{encryptedPassword,jdbcType=VARCHAR}, 
+      #{assistantPassword,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{age,jdbcType=TINYINT}, #{height,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.daselearn.admin.entity.Account">
+    insert into account
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="nickName != null">
+        nick_name,
+      </if>
+      <if test="realName != null">
+        real_name,
+      </if>
+      <if test="cardNum != null">
+        card_num,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="encryptedPassword != null">
+        encrypted_password,
+      </if>
+      <if test="assistantPassword != null">
+        assistant_password,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="height != null">
+        height,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNum != null">
+        #{cardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=BIT},
+      </if>
+      <if test="encryptedPassword != null">
+        #{encryptedPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="assistantPassword != null">
+        #{assistantPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=TINYINT},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.daselearn.admin.entity.Account">
+    update account
+    <set>
+      <if test="nickName != null">
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNum != null">
+        card_num = #{cardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=BIT},
+      </if>
+      <if test="encryptedPassword != null">
+        encrypted_password = #{encryptedPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="assistantPassword != null">
+        assistant_password = #{assistantPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=TINYINT},
+      </if>
+      <if test="height != null">
+        height = #{height,jdbcType=INTEGER},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.daselearn.admin.entity.Account">
+    update account
+    set nick_name = #{nickName,jdbcType=VARCHAR},
+      real_name = #{realName,jdbcType=VARCHAR},
+      card_num = #{cardNum,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=BIT},
+      encrypted_password = #{encryptedPassword,jdbcType=VARCHAR},
+      assistant_password = #{assistantPassword,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      age = #{age,jdbcType=TINYINT},
+      height = #{height,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+</mapper>
