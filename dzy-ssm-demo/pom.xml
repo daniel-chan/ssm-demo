@@ -33,7 +33,7 @@
     <commons.io.version>2.5</commons.io.version>
     <commons.codec.version>1.10</commons.codec.version>
     <joda.time.version>2.9.9</joda.time.version>
-	<mybatis.version>3.3.0</mybatis.version>
+	<mybatis.version>3.5.6</mybatis.version>
 	<mybatis.spring.version>1.2.3</mybatis.spring.version>
 	<pagehelper.version>4.0.0</pagehelper.version>
 	<standard.version>1.1.2</standard.version>
